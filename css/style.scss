@@ -1,0 +1,851 @@
+@font-face {
+	font-family: "Aldrich";
+	src:url("Aldrich/Aldrich-Regular.ttf");
+}
+@font-face {
+	font-family: "Lato";
+	src:url("Lato/Lato-Regular.ttf");
+}
+$primaryGray: #666;
+$primaryBlack: #191919;
+$primaryGreen: #00a97b;
+$primaryGreenOpacity: #00553d;
+$primaryWhite: #f2ecff;
+$black:#000;
+// promenljive
+// MIXIN
+@mixin background($photo) {
+    width:100%;
+    background: {
+        image:url($photo);
+        size:cover;
+        repeat:no-repeat;
+        position:center center;
+    }
+}
+
+
+* {
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+    :focus {
+        outline:none;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Aldrich', sans-serif;
+}
+a {
+    text-decoration: none;
+    color:$primaryWhite;
+    :focus {
+        outline:none;
+    }
+
+}
+ul {
+    list-style-type: none;
+}
+
+//generalne klase
+.grid {
+    display:grid;
+}
+.grid-gap10{
+    grid-gap:10px;
+}
+.grid-area {
+    grid-template-columns:1fr 1fr;
+}
+.wrap {
+    width:85%;
+    margin:0 auto;
+}
+.flex {
+    display:flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+.column {
+    flex-direction:column;
+}
+.wrap {
+    flex-wrap:wrap;
+}
+.between {
+    justify-content:space-between;
+}
+.around {
+    justify-content: space-around;
+}
+.center {
+    justify-content:center;
+}
+.flex-end {
+    justify-content: flex-end;
+}
+.align-center {
+    align-items:center;
+}
+
+
+.wrapper {
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    width:70%;
+    margin:0 auto;
+    font-size: 0.95em;
+}
+.left-text {
+    text-align:left;
+}
+
+.right-text {
+    text-align:right;
+}
+
+
+.m-right25 {
+    margin-right:25px;
+}
+.text-center {
+    text-align:center;
+}
+.m-bottom {
+    margin-bottom:50px;
+}
+.m-tb5 {
+    margin: {
+        top:5px;
+        bottom:5px;
+    }
+}
+.p-left25 {
+    padding-left:25px;
+}
+.b-tb {
+    border: {
+        top:1px solid $primaryWhite;
+        bottom:1px solid $primaryWhite;
+    }
+}
+
+.h3-p{
+    margin:40px auto;
+    h3 {
+        
+        font: {
+            size:1.7em;
+        }
+        a {
+            color:$primaryGreen;
+        }
+    }
+    p {
+        color:$primaryWhite;
+        line-height:30px;
+        font: {
+            family: 'Lato', sans-serif;
+        }
+        span{
+            color:$primaryGreen;
+        }
+    }   
+}
+
+.circle {
+    visibility: hidden;
+}
+.dimed {
+    background:rgba(0,0,0,0.5);
+    min-height:inherit;
+    justify-content: center;
+    &:hover {
+        background:none;
+        transition:background 0.7s ease-in;
+        .circle{
+            visibility: visible;
+            border-radius:50%;
+            background:$primaryGreen;
+            width:100px;
+            height:100px;
+            color:$black;
+            transition:background 0.3s ease-in;
+        }
+    }
+
+}
+//kraj generalnih klasa
+
+
+//HEADER
+header {
+    z-index: 100;
+    position: fixed;
+    width:100%;
+    box-shadow: 1px 1px 10px #000;
+    background: rgba(0,0,0,0.9);
+    #logo {
+        width:30%;
+        color: $primaryWhite;
+        h1 {
+            padding: {
+                left:13px;
+            }
+            font: {
+                size:1.6em;
+            }
+            span {
+                color:$primaryGreen;
+            }
+        }
+    }
+    #nav {
+        width:50%;
+        .active {
+            color:$primaryGreen;
+        }
+        li {
+            padding:2px 5px;
+            font: {
+                size:1.2em;
+            }
+            &:hover{
+                border-bottom:2px solid $primaryGreen;
+                margin-bottom:-2px;
+                color:$primaryGreen;
+            }
+        }
+    }
+}
+//HEADER KRAJ
+
+
+// HOME
+    #home {
+        position:relative;
+        min-height:100vh;
+        background: {
+            image:url("../img/pattern3.jpg");
+            repeat:no-repeat;
+            size:cover;
+            position:10% 70%;
+            attachment:fixed;
+        }
+        width:100%;
+        #opaque {
+            background:rgba(0,0,0,0.6);
+            min-height:inherit;
+        }
+        #developer {
+            position:absolute;
+            top:28%;
+            left:10%;
+            width:50%;
+            z-index:90;
+            border-radius:2px;
+            padding-left:15px;
+            p {
+                font: {
+                    size:1.4em;
+                }
+                color:$primaryGreen;
+            }
+            span {
+                margin:0 -2px;
+                &:hover {
+                    color:$primaryGreen;
+                    transition: all .3s ease-out;
+                }
+                font: {
+                    size:2em;
+                }
+                color:$primaryWhite;
+            }
+            .green {
+                color:$primaryGreen;
+
+            }
+            
+            h3 {
+                margin:25px 0;
+                outline:2px solid $primaryGreen;
+                display:inline-block;
+                padding:5px 10px;
+                background:$primaryGreen;
+                &:hover {
+                    background: {
+                        color:$black;
+                    }
+                    a {
+                        color:$primaryGreen
+                    }
+                }
+                a {
+                    color:$primaryWhite;
+                    font: {
+                        size:1.1em;
+                        weight:200;
+                        weight:400;
+                        family: 'Lato', sans-serif;
+                    }
+                }
+            }
+        }
+        #code {
+            position:absolute;
+            top:25%;
+            right:10%;
+            z-index:80;
+            flex-direction:column;
+            font: {
+                size:1.2em;
+            }
+            span {
+                margin:15px 0px; 
+                color:$primaryGray; 
+            }
+        }  
+    }
+// HOME KRAJ
+//SKILLS
+#skillset {
+    padding:30px 30px;
+    background: {
+        color:$primaryBlack;
+    }
+    #skills {
+        width:90%;
+        margin:0 auto;
+        padding:25px 0;
+    }
+    .skills {
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        width:25%;
+        min-height:180px;
+        background:$black;
+        border:1px solid $primaryWhite;
+
+        
+        
+        &:hover {
+            box-shadow: inset 600px 0 0 0 $primaryGreen;
+            transition: all ease 1.2s;
+            color:$primaryBlack;
+        }
+        
+        color:$primaryWhite;
+        font: {
+            size:1.5em;
+        }
+        
+    }
+}
+// SKILLS KRAJ
+// WORK
+#myWork{
+    padding:30px 0px;
+        background: {
+            color:$primaryBlack;
+    }
+    #work {
+        grid-template-columns:repeat(3,1fr);
+        margin:0 auto;
+        
+        .work {
+            min-height:300px;
+            border:1px solid $primaryWhite;
+            background: {
+                color:$primaryGray;
+            }
+        }
+        .pattern1 {
+            @include background("../img/alpha-academy.jpg")
+            background: {
+                color:$primaryGray;
+            }
+        }
+        .pattern2 {
+            @include background("../img/apartments.jpg")
+            background: {
+                color:$primaryGray;
+            }
+        }
+        .pattern3 {
+            @include background("../img/bmi.jpg")
+            background: {
+                color:$primaryGray;
+            }
+        }
+        .pattern4 {
+            @include background("../img/food.jpg")
+            background: {
+                color:$primaryGray;
+            }
+        }
+        .pattern5 {
+            @include background("../img/musician.jpg")
+            background: {
+                color:$primaryGray;
+            }
+        }
+        .pattern6 {
+            @include background("../img/yoga.jpg")
+            background: {
+                color:$primaryGray;
+            }
+        }
+    }
+}
+//WORK KRAJ
+// ABOUT
+#aboutMe {
+    padding:30px 0px;
+        background: {
+            color:$primaryBlack;
+    }
+    p {
+        span{
+            color:$primaryGreen;
+            a {
+                color:$primaryGreen;
+            }
+        }
+    }
+    #author {
+        width:45%;
+        border:1px solid $primaryWhite;
+        margin:0 auto;
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            display:block;
+        }
+    }
+}
+// ABOUT KRAJ
+// CONTACT
+#contactMe {
+    #contact-grid-text {
+        grid-template-rows:repeat(3,50px);
+        width:80%;
+        margin:0 auto 40px;
+        .contact-text {
+            margin:0 0 80px;
+            display:grid;
+            grid-template-columns: 4fr 1fr 4fr;
+        }
+    }
+    #contact-grid {
+        grid-template-columns: 1fr 1fr;
+        //grid-gap:50px;
+        #map {
+            width:85%;
+            margin:0 auto;
+            iframe {
+                filter:brightness(0.4);
+                width:100%;
+                height:100%;
+                display:block;
+            }
+        }
+    }
+    padding:30px 0px;
+        background: {
+            color:$primaryBlack;
+    }
+    
+    p {
+        line-height:15px;
+    }
+    a {
+        color:$primaryGreen;   
+    }
+    span {
+        a {
+            font: {
+                size:0.9em;
+            }
+        }
+        margin-top:15px;
+    }
+    #form {
+        width:90%;
+        margin:0 auto;
+        form {
+            grid-template-rows:2fr 2fr 2fr 8fr 2fr;
+            margin:0 auto;
+            overflow:auto;
+            width:90%;
+            input,textarea {
+                background: {
+                    color:$black;
+                }
+                width:100%;
+                font:{
+                   family:"Lato", sans-serif;
+                   size:1em;
+                }
+                color:$primaryWhite;
+                border:1px solid $primaryWhite;
+            }
+            textarea {
+                padding-top:10px;
+                resize:none;
+            }
+            input[type="submit"]:hover{
+                background:$primaryGreenOpacity;
+                color:$black;
+                transition:background 0.5s ease-in-out ;
+            } 
+            input[type="reset"]:hover {
+                background:$primaryGreenOpacity;
+                color:$black;
+                transition:background 0.5s ease-in-out ;
+            } 
+            input:hover {
+                border-bottom:1px solid $primaryGreen;
+                transition:border-bottom 0.5s ease-in;
+            }
+            textarea:hover {
+                border-bottom:1px solid $primaryGreen;
+                transition:border-bottom 0.5s ease-in;
+            } 
+        }
+    }
+}
+
+// CONTACT KRAJ
+//FOOTER
+#footer {
+    grid-template-columns:1fr 1fr;
+    background: {
+        color:$black;
+    }
+    font-size: 0.9em;
+    padding:15px 0;
+    border: {
+        top:3px solid $primaryWhite;
+    }
+    a:hover {
+        color:$primaryGreen;
+    } 
+}
+//FOTER KRAJ
+
+
+
+
+@media only screen and(max-width:960px) {
+
+// HEADER RESPONSIVE 960px
+    header {
+        #nav{
+            width:60%;
+        }
+    }
+    // HEADER RESPONSIVE 960px KRAJ
+    // HOME RESPONSIVE 960px
+    #home {
+        #developer {
+            left:5%;
+            width:70%;
+        }
+        #code {
+            right:5%;
+        }
+    }
+    // HOME RESPONSIVE 960px KRAJ
+    // SKILLS RESPONSIVE 960
+    #skillset {
+        #skills {
+            .skills {
+                width: 50%;
+            }
+        }
+    }
+    // SKILLS RESPONSIVE 960px KRAJ
+    // WORK RESPONSIVE 960px
+    #myWork{
+        #work {
+            grid-template-columns:repeat(2,1fr);   
+        }
+    }
+    // WORK RESPONSIVE 960px KRAJ
+    // AUTHOR RESPONSIVE 960px
+    #aboutMe {
+        #author{
+            width:60%;
+        }
+    }
+    // AUTHOR RESPONSIVE 960px KRAJ
+    // CONTACT RESPONSIVE 960px
+    #contactMe {
+        #contact-grid {
+            grid-template-columns: repeat(1,1fr);
+            grid-gap:50px;
+            #map {
+                order:2;
+                width:100%;
+                min-height:250px;
+            }
+            #form {
+                order:1;
+                width:90%;
+            }
+        }
+        
+    }
+    // CONTACT RESPONSIVE 960px KRAJ
+    //FOOTER RESPONSVICE 960px
+    #footer {
+        font: {
+            size:0.8em;
+        }
+    }
+    //FOOTER RESPONSVICE 960px
+}
+
+
+
+
+
+
+@media only screen and(max-width:720px) {
+//GENERALNE KLASE 720px
+.wrapper {
+    font: {
+        size:0.85em;
+    }
+    p {
+        text-align:center;
+    }
+}
+//GENERALNE KLASE 720px KRAJ
+
+
+// HEADER RESPONSIVE 720px
+    header {
+        #logo {
+            margin-left:10px;
+        }
+        #nav{
+            width:70%;
+        }
+    }
+// HEADER RESPONSIVE 720px KRAJ
+
+// HOME RESPONSIVE 720px
+    #home {
+        height:100vh;
+        font: {
+            size:0.99em;
+        }
+        #developer {
+            top:20%;
+            left:2.3%;
+            width:95%;
+            h3 {
+                margin:35px 0;
+            }
+        }
+        #code {
+            right:5%;
+            top:53%;
+            display:flex;
+            padding:0 25px;
+            white-space:nowrap;
+            span {
+                margin:8px 0px; 
+            }
+
+            font: {
+                size:1em;
+            }
+        }
+    }
+    //WORK RESPONSIVE 720px
+    #myWork {
+        font: {
+            size:0.85em;
+        }
+    }
+    //WORK RESPONSIVE 720px KRAJ
+    // HOME RESPONSIVE 720px KRAJ
+    // SKILLS RESPONSIVE 720px
+    #skillset {
+        #skills {
+            .skills {
+                width: 67%;
+                margin:10px 0;
+            }
+        }
+    }
+    // SKILLS RESPONSIVE 720px KRAJ
+    // WORK RESPONSIVE 720px
+    #myWork{
+        #work {
+            grid-template-columns:repeat(1,1fr);   
+        }
+    }
+    // WORK RESPONSIVE 720px KRAJ
+    // AUTHOR RESPONSIVE 720px
+    #aboutMe {
+        #author{
+            width:70%;
+            
+        }
+    }
+    // AUTHOR RESPONSIVE 720px KRAJ
+    // CONTACT RESPONSIVE 720px
+    #contactMe {
+        #contact-grid-text {
+            grid-template-rows: repeat(1,1fr);
+            grid-gap:0px;
+            .contact-text {
+                grid-template-columns: repeat(1,1fr);
+                margin-bottom:35px;
+                p {
+                    text-align: center;
+                }
+            }
+        }
+        #contact-grid {
+            #map {
+                order:2;
+                width:100%;
+                min-height:170px;
+            }
+            
+        }
+        font: {
+            size:0.85em;
+        }
+        
+    }
+    // CONTACT RESPONSIVE 720px KRAJ
+    //FOOTER RESPONSIVE 720px 
+    #footer {
+        font: {
+            size:0.80em;
+        }
+    }
+    //FOOTER RESPONSIVE 720px KRAJ
+}
+
+
+
+
+
+
+@media only screen and (max-width:480px) {
+// HEADER RESPONSIVE 480px    
+    header {
+        flex-direction:column;
+        padding-bottom:10px;
+        position: absolute;
+        z-index: 300;
+        top: 0;
+        #logo {
+            width:30%;
+            text-align:center;
+            h1 {
+                padding:0 15px 0 0;
+                margin:0;
+            }
+                font: {
+                    size:0.9em;
+                    }
+            }
+                #nav {
+                    width:100%;
+                    margin:0 auto;
+                ul {
+                    width:100%;
+                    flex-direction:column;
+                    align-items:center;
+                    li {
+                     padding:3px 0px;
+                        a {
+                            font {
+                         size:0.7em;
+                        }
+                    }
+                }
+            }
+        }
+     }
+// HEADER RESPONSIVE 480px  KRAJ
+// HOME RESPONSIVE 480px 
+#home {
+    #developer {
+        top:37%;
+        left:0%;
+        width:100%;
+        font-size:0.8em;
+        h3 {
+            margin:15px 0;
+            outline:2px solid $primaryGreen;
+            display:inline-block;
+            padding:2.5px 5px;
+        }
+    }
+    #code {
+        right:5%;
+        top:67%;
+        font: {
+            size:0.75em;
+        }
+        span {
+            margin:5px 0px; 
+        }
+    }
+}
+
+// HOME RESPONSIVE 480px  KRAJ
+// SKILLS RESPONSIVE 480px
+#skillset {
+    #skills {
+        .skills {
+            width: 80%;
+        }
+    }
+}
+// SKILLS RESPONSIVE 480px KRAJ
+// AUTHOR RESPONSIVE 480px
+#aboutMe {
+    /*p {
+        font: {
+            size:0.8em;
+        }
+    }*/
+    #author{
+        width:90%;
+    }
+}
+// AUTHOR RESPONSIVE 480px KRAJ
+// CONTACT RESPONSIVE 480px
+#contactMe {
+    #form {
+        width:100%;
+    }
+}
+// CONTACT RESPONSIVE 480px KRAJ
+//FOOTER RESPONSIVE 720px 
+#footer {
+    font: {
+        size:0.70em;
+    }
+}
+//FOOTER RESPONSIVE 720px KRAJ
+}
